@@ -1,5 +1,7 @@
 #Attack Network - DISCLAIMER !
-##This Scripts DOES NOT Promote or Encourage Any illegal activites, all content provided by This Scripts is meant for EDUCATIONAL Purpose Only.  
+
+##The Scripts DOES NOT Promote or Encourage Any illegal activites, all content provided by The Scripts is meant for EDUCATIONAL Purpose Only.  
+
 ###The scripts doesn't work for me, what I do wrong?
 All of the script are tested and developed on Ubuntu (18.04). So please use also Ubuntu :) There are multiple things that can go wrong, please following this checklist:
 
