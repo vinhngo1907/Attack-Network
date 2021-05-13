@@ -1,10 +1,10 @@
 from scapy.all import *
 import socket,sys,threading,random
 
-print '###########################################'
-print '#PING_FLOOD - A Multithreaded PING FLOODER#'
-print '#\t\tAuthor: VinhNgo \t  #'
-print '###########################################'
+print '##############################################'
+print '#PING OF FLOOD - A Multithreaded PING FLOODER#'
+print '#\t\tAuthor: VinhNgo \t     #'
+print '##############################################'
 class PING(threading.Thread):
         def __init__(self,target,MESSAGE,packets):
                 threading.Thread.__init__(self)
