@@ -15,4 +15,7 @@ class Random_AI(AI_Vhello):
         super(Random_AI, self).__init__(game, AI_player)
 
     def get_next_move(self):
-        return super().get_next_move()
+        game_board = Vhello.pre_build(self.game.board, self.AI_player)
+        game_moves = game_board.get_possible_moves()
+        # return tupple (col,row)
+        return game_moves[0]
