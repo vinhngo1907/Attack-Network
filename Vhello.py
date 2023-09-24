@@ -52,6 +52,7 @@ class Vhello:
             i = i + 1
         s = s + "------------------------------------\n"
         return s
+    
     def get_possible_moves(self):
         playable = []
 
@@ -60,6 +61,9 @@ class Vhello:
                 if self.board[row][col] == " " and self.is_playable(col,row):
                     playable.append((col, row))
         return playable
+    
+    def __switch_turn_(self):
+        return self.B if self.turn == self.w else self.W
     
     def out_of_bounds(self, col, row):
         return True if col < 0 or row < 0 or col > self.col or row > self.row else False
