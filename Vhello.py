@@ -106,7 +106,7 @@ class Vhello:
         self.__flip_vs_update__(col, row, title)
 
         #check out_of_bounds and next flip have tile diff with tile so flip this position
-        while self.out_of_bounds(col, row) == False and self.board[row][col] != tile:
+        while self.out_of_bounds(col, row) == False and self.board[row][col] != title:
             self.__flip_vs_update__(col, row, title)
             row = row + dir_row
             col = col + dir_col
