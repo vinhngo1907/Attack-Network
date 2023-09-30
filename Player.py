@@ -1,5 +1,5 @@
 class Player(object):
-    """Abstract Method to define rules for Players are Humman or Computer inherent"""
+    """Abstract Method to define rules for Players are Human or Computer inherent"""
     def __init__(self, game, player):
         self.game = game
         self.player = player
@@ -7,11 +7,11 @@ class Player(object):
         def play(self):
             raise NotImplementedError("Inheritator forgot to implement this")
 
-#class Humman inherent from abstract class Player
-class Humman(Player):
+#class Human inherent from abstract class Player
+class Human(Player):
     def __init__(self, game, player):
         #child inherent from parent 
-        super(Humman, self).__init__(game, player)
+        super(Human, self).__init__(game, player)
     
     #overrite function play
     def play(self):
