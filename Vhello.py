@@ -7,11 +7,14 @@ class Vhello:
     col = 8
     BOARD_TOTAL_MOVES = row*col
     
-    def __init__(self) -> None:
+    def __init__(self):
         self.__reset_board()
-    
+
     @classmethod
     def pre_built(cls, board, turn):
+        """When you have a setup you want to load"""
+        """TODO: Later with board being changable will require a verifier"""
+
         new_game = cls()
         new_game.__reset_board__()
         new_game.board = [[board[col][row] for row in range(new_game.row)] for col in range(new_game.col)]
