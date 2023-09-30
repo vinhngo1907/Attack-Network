@@ -11,7 +11,7 @@ class Vhello:
         self.__reset_board()
     
     @classmethod
-    def pre_build(cls, board, turn):
+    def pre_built(cls, board, turn):
         new_game = cls()
         new_game.__reset_board__()
         new_game.board = [[board[col][row] for row in range(new_game.row)] for col in range(new_game.col)]
@@ -81,4 +81,37 @@ class Vhello:
                 if self.is_flipable(dir_col, dir_row, col, row, self.turn):
                     return True
         return False
+
+    def play(self, col, row):
+        if self.is_playable(col, row) == False:
+            return
+        for dir_col in range(-1, 2):
+            for dir_row in range(-1, 2):
+                if dir_col != 0 or dir_row != 0:
+                    if self.is_flipable(dir_col, dir_row, col, row, self.turn):
+                        """
+                            |*|*|*|
+                            |*|W|*|
+                            |*|*|*|
+                            === * is check flip arround (col,row) when function play(col,row) run
+                        """
+                        self.flip(dir_col, dir_row, col, row, self.turn)
     
+
+    def flip(self, dir_col, dir_row, start_col, start_row, title):
+        row = start_row
+        col = start_col
+
+        #place point have tile in the position (col, row)
+        self.__flip_vs_update__(col, row, title)
+
+        #check out_of_bounds and next flip have tile diff with tile so flip this position
+        while self.out_of_bounds(col, row) == False and self.board[row][col] != tile:
+            self.__flip_vs_update__(col, row, title)
+            row = row + dir_row
+            col = col + dir_col
+        
+    def __flip_vs_update__(self, row, col, title):
+        #check this position have same title 
+        if self.board[row][col] == title:
+            return
