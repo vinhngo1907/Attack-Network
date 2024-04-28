@@ -11,7 +11,7 @@ data = []
 link_category_dict = dict()
 
 
-def parse_link(href, currentPage=1):
+def parse_link(href, currentPage=1, maxPages=1):
     # Check if href already starts with 'https://'
     if href.startswith("https://"):
         page = href + f"?page={currentPage}"
@@ -24,7 +24,7 @@ def parse_link(href, currentPage=1):
     _r = _session.get(page)
     items = _r.html.find("div.ProductList__NewWrapper-sc-1dl80l2-0.jXFjHV")
 
-    if len(items) == 0:
+    if len(items) == 0 or currentPage > maxPages:
         return
     for item in items:
         category = link_category_dict[href]
@@ -33,7 +33,7 @@ def parse_link(href, currentPage=1):
 
     try:
         print("page ", page)
-        parse_link(href, currentPage=nextPage)
+        parse_link(href, currentPage=nextPage, maxPages=maxPages)
     except Exception as e:
         print("some errors occured when parsing link", str(e))
 
